@@ -24,12 +24,12 @@ public class JTomlParser {
         Map<String, Object> result = new HashMap<>();
         while (index < content.length()) {
             skipWhitespace();
-            if (content.charAt(index) == '#') {
+            if (index < content.length() && content.charAt(index) == '#') {
                 skipComment();
-            } else {
+            } else if (index < content.length()) {
                 String key = parseKey();
                 skipWhitespace();
-                if (content.charAt(index) == '=') {
+                if (index < content.length() && content.charAt(index) == '=') {
                     index++; // Skip '='
                     skipWhitespace();
                     Object value = parseValue();

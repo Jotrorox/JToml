@@ -1,4 +1,4 @@
-name: Maven clean package
+name: Maven clean test
 
 on:
   push:
@@ -19,5 +19,5 @@ jobs:
           java-version: '21'
           distribution: 'temurin'
           cache: maven
-      - name: Build with Maven
-        run: mvn clean package
+      - name: Test with Maven and JUnit
+        run: mvn clean test
