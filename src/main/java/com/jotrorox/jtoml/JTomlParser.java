@@ -24,9 +24,8 @@ public class JTomlParser {
         Map<String, Object> result = new HashMap<>();
         while (index < content.length()) {
             skipWhitespace();
-            if (index < content.length() && content.charAt(index) == '#') {
-                skipComment();
-            } else if (index < content.length()) {
+            if (index < content.length() && content.charAt(index) == '#') skipComment();
+            else if (index < content.length()) {
                 String key = parseKey();
                 skipWhitespace();
                 if (index < content.length() && content.charAt(index) == '=') {
@@ -44,18 +43,14 @@ public class JTomlParser {
      * Checks all the whitespace characters from the current index and skips them, so the index points to the next non-whitespace character.
      */
     private void skipWhitespace() {
-        while (index < content.length() && Character.isWhitespace(content.charAt(index))) {
-            index++;
-        }
+        while (index < content.length() && Character.isWhitespace(content.charAt(index))) index++;
     }
 
     /**
      * Skips the comment from the current index to the end of the line.
      */
     private void skipComment() {
-        while (index < content.length() && content.charAt(index)!= '\n') {
-            index++;
-        }
+        while (index < content.length() && content.charAt(index)!= '\n') index++;
     }
 
     /**
@@ -78,15 +73,10 @@ public class JTomlParser {
     private Object parseValue() {
         skipWhitespace();
         char firstChar = content.charAt(index);
-        if (firstChar == '"') {
-            return parseString();
-        } else if (Character.isDigit(firstChar)) {
-            return parseInt();
-        } else if (firstChar == 't' || firstChar == 'f') {
-            return parseBoolean();
-        } else {
-            throw new IllegalArgumentException("Unsupported value type");
-        }
+        if (firstChar == '"') return parseString();
+        else if (Character.isDigit(firstChar)) return parseInt();
+        else if (firstChar == 't' || firstChar == 'f') return parseBoolean();
+        else throw new IllegalArgumentException("Unsupported value type");
     }
 
     /**
