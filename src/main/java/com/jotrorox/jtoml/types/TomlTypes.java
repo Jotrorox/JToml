@@ -30,8 +30,6 @@ public enum TomlTypes {
     /**
      * Represents a TOML Float
      * @since 0.2
-     * 
-     * <b>This has not been implemented yet</b>
      */
     FLOAT,
 
@@ -121,6 +119,8 @@ public enum TomlTypes {
                 return new TomlInteger(key, (int) value);
             case BOOLEAN:
                 return new TomlBoolean(key, (boolean) value);
+            case FLOAT:
+                return new TomlFloat(key, (double) value);
             default:
                 throw new IllegalArgumentException("Unknown TOML type: " + type);
         }
