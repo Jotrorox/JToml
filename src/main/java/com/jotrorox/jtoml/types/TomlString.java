@@ -84,4 +84,18 @@ public class TomlString extends TomlType {
     public String getKey() {
         return key;
     }
+
+    /**
+     * Creates a TOML string from a string
+     * @param toml The raw TOML string
+     * @return The TOML string
+     */
+    public static TomlString fromString(String toml) {
+        toml.trim();
+        String[] parts = toml.split("=");
+        String key = parts[0].trim();
+        String value = parts[1].trim();
+        value = value.substring(1, value.length() - 1);
+        return new TomlString(key, value);
+    }
 }

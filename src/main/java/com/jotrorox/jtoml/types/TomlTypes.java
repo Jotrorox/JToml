@@ -14,20 +14,19 @@ public enum TomlTypes {
      * @since 0.2
      */
     STRING,
+
     /**
      * Represents a TOML Integer
      * @since 0.2
-     * 
-     * <b>This has not been implemented yet</b>
      */
     INTEGER,
+
     /**
      * Represents a TOML Boolean
      * @since 0.2
-     * 
-     * <b>This has not been implemented yet</b>
      */
     BOOLEAN,
+
     /**
      * Represents a TOML Float
      * @since 0.2
@@ -35,6 +34,7 @@ public enum TomlTypes {
      * <b>This has not been implemented yet</b>
      */
     FLOAT,
+
     /**
      * Represents a TOML Date
      * @since 0.2
@@ -42,6 +42,7 @@ public enum TomlTypes {
      * <b>This has not been implemented yet</b>
      */
     DATE,
+
     /**
      * Represents a TOML Array
      * @since 0.2
@@ -49,6 +50,7 @@ public enum TomlTypes {
      * <b>This has not been implemented yet</b>
      */
     ARRAY,
+
     /**
      * Represents a TOML Table
      * @since 0.2
@@ -56,6 +58,7 @@ public enum TomlTypes {
      * <b>This has not been implemented yet</b>
      */
     TABLE,
+
     /**
      * Represents a TOML Table Array
      * @since 0.2
@@ -116,6 +119,8 @@ public enum TomlTypes {
                 return new TomlString(key, (String) value);
             case INTEGER:
                 return new TomlInteger(key, (int) value);
+            case BOOLEAN:
+                return new TomlBoolean(key, (boolean) value);
             default:
                 throw new IllegalArgumentException("Unknown TOML type: " + type);
         }

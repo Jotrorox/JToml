@@ -82,4 +82,17 @@ public class TomlInteger extends TomlType {
     public String getKey() {
         return key;
     }
+
+    /**
+     * Creates a TOML integer from a TOML string
+     * 
+     * @param toml The TOML string to convert
+     * @return The TOML integer
+     */
+    public static TomlInteger fromString(String toml) {
+        String[] parts = toml.split(" = ");
+        String key = parts[0];
+        int value = Integer.parseInt(parts[1]);
+        return new TomlInteger(key, value);
+    }
 }
