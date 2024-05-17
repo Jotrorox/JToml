@@ -16,30 +16,65 @@ public class JTomlParser {
         this.index = 0;
     }
 
-    /**
-     * Parse the TOML file
-     * @return The parsed TOML file
-     */
+    private Map<String, Object> parseTable() {
+        index++; // Skip opening bracket
+        String tableName = parseKey();
+        skipWhitespace();
+        if (index < content.length() && content.charAt(index) == ']') {
+            index++; // Skip closing bracket
+        } else {
+            throw new IllegalArgumentException("Missing closing bracket for table");
+        }
+        skipWhitespace();
+        if (index < content.length() && content.charAt(index) == '\n') {
+            index++; // Skip newline
+        }
+        Map<String, Object> table = new HashMap<>();
+        while (index < content.length() && content.charAt(index) != '[') {
+            if (content.charAt(index) == '\n') {
+                index++; // Skip newline
+                continue;
+            }
+            String key = parseKey();
+            skipWhitespace();
+            if (index < content.length() && content.charAt(index) == '=') {
+                index++; // Skip '='
+                skipWhitespace();
+                Object value = parseValue();
+                table.put(key, value);
+            }
+            skipWhitespace();
+        }
+        return table;
+    }
+
     public Map<String, Object> parse() {
         Map<String, Object> result = new HashMap<>();
+        Map<String, Object> currentTable = result;
         while (index < content.length()) {
             skipWhitespace();
             if (index < content.length() && content.charAt(index) == '#') skipComment();
             else if (index < content.length()) {
-                String key = parseKey();
-                skipWhitespace();
-                if (index < content.length() && content.charAt(index) == '=') {
-                    index++; // Skip '='
+                if (content.charAt(index) == '[') {
+                    Map<String, Object> table = parseTable();
+                    currentTable.putAll(table);
+                    currentTable = table;
+                } else {
+                    String key = parseKey();
                     skipWhitespace();
-                    Object value = parseValue();
-                    result.put(key, value);
+                    if (index < content.length() && content.charAt(index) == '=') {
+                        index++; // Skip '='
+                        skipWhitespace();
+                        Object value = parseValue();
+                        currentTable.put(key, value);
+                    }
                 }
             }
         }
         return result;
     }
 
-    /**
+   /**
      * Checks all the whitespace characters from the current index and skips them, so the index points to the next non-whitespace character.
      */
     private void skipWhitespace() {
@@ -59,7 +94,7 @@ public class JTomlParser {
      */
     private String parseKey() {
         StringBuilder key = new StringBuilder();
-        while (index < content.length() && content.charAt(index)!= '=' &&!Character.isWhitespace(content.charAt(index))) {
+        while (index < content.length() && content.charAt(index)!= '=' && content.charAt(index) != ']' && !Character.isWhitespace(content.charAt(index))) {
             key.append(content.charAt(index));
             index++;
         }
