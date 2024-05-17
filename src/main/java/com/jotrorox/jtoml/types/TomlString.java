@@ -12,12 +12,12 @@ public class TomlString extends TomlType {
     /**
      * The value of the TOML string
      */
-    String value;
+    private final String value;
 
     /**
      * The key of the TOML string
      */
-    String key;
+    private final String key;
 
     /**
      * Creates a new TOML string
@@ -55,14 +55,32 @@ public class TomlString extends TomlType {
         return this.value.equals(value);
     }
 
+    /** Custom Functions **/
+
+    /**
+     * Checks if the TOML string is equal to another given string
+     * 
+     * @param value The string to compare to
+     * @return If the TOML string is equal to the string
+     */
     public boolean valueEquals(String value) {
         return this.value.equals(value);
     }
 
+    /**
+     * Gets the value of the TOML string
+     * 
+     * @return The value of the TOML string
+     */
     public String getValue() {
         return value;
     }
 
+    /**
+     * Gets the key of the TOML string
+     * 
+     * @return The key of the TOML string
+     */
     public String getKey() {
         return key;
     }
