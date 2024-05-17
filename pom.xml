@@ -7,7 +7,7 @@
     <groupId>com.jotrorox.jtoml</groupId>
     <artifactId>jtoml</artifactId>
     <packaging>jar</packaging>
-    <version>0.1</version>
+    <version>0.2</version>
 
     <name>JToml</name>
     <description>A simple TOML parser for Java</description>

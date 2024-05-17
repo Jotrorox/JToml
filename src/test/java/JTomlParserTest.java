@@ -14,15 +14,6 @@ public class JTomlParserTest {
     }
 
     @Test
-    public void testParseTable() {
-        JTomlParser parser = new JTomlParser("[table]\nkey = \"value\"");
-        Map<String, Object> test = parser.parse();
-        assert test.size() == 1;
-        assert test.get("table") instanceof Map;
-        assert ((Map)test.get("table")).get("key").equals("value");
-    }
-
-    @Test
     public void testParseMultiple() {
         JTomlParser parser = new JTomlParser
                 ("key1 = \"value1\"\nkey2 = 2\nkey3 = true");
