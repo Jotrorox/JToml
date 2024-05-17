@@ -10,29 +10,6 @@ package com.jotrorox.jtoml.types;
  */
 public abstract class TomlType {
     /**
-     * The key of the TOML type
-     */
-    String key;
-
-    /**
-     * The value of the TOML type
-     * 
-     * This is an Object because it can be any type and will be adjusted accordingly
-     */
-    Object value;
-    
-    /**
-     * Creates a new TOML type
-     * 
-     * @param key The key of the TOML type
-     * @param value The value of the TOML type
-     */
-    public TomlType(String key, Object value) {
-        this.key = key;
-        this.value = value;
-    }
-
-    /**
      * Converts the TOML type to a TOML string
      * 
      * @return The TOML string
@@ -45,7 +22,10 @@ public abstract class TomlType {
      * @param obj The object to compare to
      * @return If the TOML type is equal to the object
      */
-    public abstract boolean equals(Object obj);
+    public abstract boolean equals(TomlType obj);
+
+    public abstract boolean keyEquals(String key);
+    public abstract boolean valueEquals(Object value);
 
     /**
      * Gets the hash code of the TOML type
@@ -53,20 +33,4 @@ public abstract class TomlType {
      * @return The hash code
      */
     public abstract int hashCode();
-    
-    /**
-     * Gets the key of the TOML type
-     * @return The key
-     */
-    public String getKey() {
-        return key;
-    }
-
-    /**
-     * Gets the value of the TOML type
-     * @return The value
-     */
-    public Object getValue() {
-        return value;
-    }
 }
