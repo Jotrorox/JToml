@@ -21,7 +21,7 @@
   <a href="#dart-about">About</a> &#xa0; | &#xa0; 
   <a href="#sparkles-features">Features</a> &#xa0; | &#xa0;
   <a href="#white_check_mark-development-requirements">Development Requirements</a> &#xa0; | &#xa0;
-  <a href="#checkered_flag-starting-development-setup">Starting</a> &#xa0; | &#xa0;
+  <a href="#checkered_flag-starting-development-setup">Development Setup</a> &#xa0; | &#xa0;
   <a href="#dash-using-this-as-a-library">Getting Started</a> &#xa0; | &#xa0;
   <a href="#memo-license">License</a> &#xa0; | &#xa0;
   <a href="https://jotrorox.com" target="_blank">Author</a>
@@ -85,6 +85,7 @@ $ mvn install
 
 This project is under the LGPL-3 License. For more details, see the [LICENSE](LICENSE.md) file.
 
+<br>
 
 Made with :heart: by <a href="https://jotrorox.com" target="_blank">Jotrorox</a>
 
