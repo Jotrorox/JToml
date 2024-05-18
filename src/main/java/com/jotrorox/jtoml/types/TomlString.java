@@ -2,7 +2,7 @@ package com.jotrorox.jtoml.types;
 
 /**
  * Represents a TOML String
- * 
+ * <p>
  * This class represents a TOML string.
  * It is used to store TOML strings and convert them to TOML strings.
  * 
@@ -55,7 +55,7 @@ public class TomlString extends TomlType {
         return this.value.equals(value);
     }
 
-    /** Custom Functions **/
+    /* Custom Functions */
 
     /**
      * Checks if the TOML string is equal to another given string

@@ -2,7 +2,7 @@ package com.jotrorox.jtoml.types;
 
 /**
  * Represents all future TOML Types
- * 
+ * <p>
  * This class is the base class for all TOML types.
  * It is just utility and for some standardization.
  * 

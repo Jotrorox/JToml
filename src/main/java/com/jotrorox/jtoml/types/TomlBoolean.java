@@ -2,7 +2,7 @@ package com.jotrorox.jtoml.types;
 
 /**
  * Represents a TOML Boolean
- * 
+ * <p>
  * This class represents a TOML boolean.
  * It is used to store TOML booleans and convert them to TOML strings.
  * 
@@ -57,7 +57,7 @@ public class TomlBoolean extends TomlType {
         return key.hashCode() + (value ? 1 : 0);
     }
 
-    /** Custom Functions **/
+    /* Custom Functions */
 
     /**
      * Checks if the TOML boolean is equal to another given boolean

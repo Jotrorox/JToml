@@ -2,7 +2,7 @@ package com.jotrorox.jtoml.types;
 
 /**
  * Represents a TOML Integer
- * 
+ * <p>
  * This class represents a TOML integer.
  * It is used to store TOML integers and convert them to TOML strings.
  * 
@@ -55,7 +55,7 @@ public class TomlInteger extends TomlType {
         return key.hashCode() + value;
     }
 
-    /** Custom Functions **/
+    /* Custom Functions */
 
     /**
      * Checks if the TOML integer is equal to another integer

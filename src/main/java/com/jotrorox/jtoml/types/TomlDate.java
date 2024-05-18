@@ -4,7 +4,7 @@ import java.util.Date;
 
 /**
  * Represents a TOML Date
- * 
+ * <p>
  * This class represents a TOML date.
  * It is used to store TOML dates and convert them to TOML strings.
  * 
@@ -36,20 +36,18 @@ public class TomlDate extends TomlType {
     @Override
     public String toTomlString() {
         // Format the date into the following format: 1979-05-27T07:32:00Z
-        StringBuilder formattedBuilder = new StringBuilder();
-        formattedBuilder.append(value.getYear() + 1900);
-        formattedBuilder.append("-");
-        formattedBuilder.append(value.getMonth() + 1);
-        formattedBuilder.append("-");
-        formattedBuilder.append(value.getDate());
-        formattedBuilder.append("T");
-        formattedBuilder.append(value.getHours());
-        formattedBuilder.append(":");
-        formattedBuilder.append(value.getMinutes());
-        formattedBuilder.append(":");
-        formattedBuilder.append(value.getSeconds());
-        formattedBuilder.append("Z");
-        return formattedBuilder.toString();
+        return (value.getYear() + 1900) +
+                "-" +
+                (value.getMonth() + 1) +
+                "-" +
+                value.getDate() +
+                "T" +
+                value.getHours() +
+                ":" +
+                value.getMinutes() +
+                ":" +
+                value.getSeconds() +
+                "Z";
     }
 
     @Override
@@ -73,7 +71,7 @@ public class TomlDate extends TomlType {
         return key.hashCode() + value.hashCode();
     }
 
-    /** Custom Functions **/
+    /* Custom Functions */
 
     /**
      * Returns the value of the TOML date

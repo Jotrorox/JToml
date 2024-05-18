@@ -2,7 +2,7 @@ package com.jotrorox.jtoml.types;
 
 /**
  * Represents a TOML Float
- * 
+ * <p>
  * This class represents a TOML float.
  * It is used to store TOML floats and convert them to TOML strings.
  * 
@@ -56,7 +56,7 @@ public class TomlFloat extends TomlType {
         return key.hashCode() + (int) value;
     }
     
-    /** Custom Functions **/
+    /* Custom Functions */
 
     /**
      * Checks if the TOML float is equal to another float
