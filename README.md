@@ -20,9 +20,9 @@
 <p align="center">
   <a href="#dart-about">About</a> &#xa0; | &#xa0; 
   <a href="#sparkles-features">Features</a> &#xa0; | &#xa0;
-  <a href="#white_check_mark-requirements">Development Requirements</a> &#xa0; | &#xa0;
-  <a href="#checkered_flag-starting">Starting</a> &#xa0; | &#xa0;
-  <a href="#dash-getting-started">Getting Started</a> &#xa0; | &#xa0;
+  <a href="#white_check_mark-development-requirements">Development Requirements</a> &#xa0; | &#xa0;
+  <a href="#checkered_flag-starting-development-setup">Starting</a> &#xa0; | &#xa0;
+  <a href="#dash-using-this-as-a-library">Getting Started</a> &#xa0; | &#xa0;
   <a href="#memo-license">License</a> &#xa0; | &#xa0;
   <a href="https://jotrorox.com" target="_blank">Author</a>
 </p>
