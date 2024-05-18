@@ -1,5 +1,7 @@
 package com.jotrorox.jtoml.types;
 
+import java.util.Date;
+
 /**
  * Represents all future TOML Types
  * 
@@ -36,8 +38,6 @@ public enum TomlTypes {
     /**
      * Represents a TOML Date
      * @since 0.2
-     * 
-     * <b>This has not been implemented yet</b>
      */
     DATE,
 
@@ -121,6 +121,8 @@ public enum TomlTypes {
                 return new TomlBoolean(key, (boolean) value);
             case FLOAT:
                 return new TomlFloat(key, (double) value);
+            case DATE:
+                return new TomlDate(key, (Date) value);
             default:
                 throw new IllegalArgumentException("Unknown TOML type: " + type);
         }

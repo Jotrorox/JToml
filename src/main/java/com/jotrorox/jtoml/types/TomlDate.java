@@ -9,8 +9,6 @@ import java.util.Date;
  * It is used to store TOML dates and convert them to TOML strings.
  * 
  * @since 0.2
- * 
- * <b>This class has not been fully implemented yet</b>
  */
 public class TomlDate extends TomlType {
     /**
