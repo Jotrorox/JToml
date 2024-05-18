@@ -18,7 +18,7 @@ public class JTomlParser {
 
     private Map<String, Object> parseTable() {
         index++; // Skip opening bracket
-        String tableName = parseKey();
+        parseKey();
         skipWhitespace();
         if (index < content.length() && content.charAt(index) == ']') {
             index++; // Skip closing bracket
