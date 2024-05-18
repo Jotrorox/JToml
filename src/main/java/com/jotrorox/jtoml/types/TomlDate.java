@@ -36,7 +36,7 @@ public class TomlDate extends TomlType {
     @Override
     public String toTomlString() {
         // Format the date into the following format: 1979-05-27T07:32:00Z
-        return (value.getYear() + 1900) +
+        return key + " = " +  (value.getYear() + 1900) +
                 "-" +
                 (value.getMonth() + 1) +
                 "-" +
@@ -98,8 +98,12 @@ public class TomlDate extends TomlType {
      * @return The TOML date created from the TOML string
      */
     @SuppressWarnings("deprecation")
-    public static TomlDate fromToml(String toml) {
+    public static TomlDate fromString(String toml) {
         // Get the JavaDate from the following format: key = 1979-05-27T07:32:00Z
+        if (!toml.contains("=")) {
+            throw new IllegalArgumentException("Invalid TOML string: " + toml);
+        }
+
         String[] split = toml.split("=");
         String key = split[0].trim();
         Date date = new Date();
@@ -111,7 +115,11 @@ public class TomlDate extends TomlType {
         date.setDate(Integer.parseInt(dateSplit2[2]));
         date.setHours(Integer.parseInt(timeSplit[0]));
         date.setMinutes(Integer.parseInt(timeSplit[1]));
-        date.setSeconds(Integer.parseInt(timeSplit[2].substring(0, 2)));
+        String secondsString = timeSplit[2];
+        if (secondsString.endsWith("Z")) {
+            secondsString = secondsString.substring(0, secondsString.length() - 1);
+        }
+        date.setSeconds(Integer.parseInt(secondsString));
         return new TomlDate(key, date);
     }
 }

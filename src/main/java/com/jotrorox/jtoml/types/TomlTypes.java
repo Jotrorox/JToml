@@ -55,76 +55,41 @@ public enum TomlTypes {
      * 
      * <b>This has not been implemented yet</b>
      */
-    TABLE,
-
-    /**
-     * Represents a TOML Table Array
-     * @since 0.2
-     * 
-     * <b>This has not been implemented yet</b>
-     */
-    TABLE_ARRAY;
+    TABLE;
 
     public static TomlTypes fromString(String type) {
-        switch (type) {
-            case "string":
-                return STRING;
-            case "integer":
-                return INTEGER;
-            case "boolean":
-                return BOOLEAN;
-            case "float":
-                return FLOAT;
-            case "date":
-                return DATE;
-            case "array":
-                return ARRAY;
-            case "table":
-                return TABLE;
-            case "table_array":
-                return TABLE_ARRAY;
-            default:
-                throw new IllegalArgumentException("Unknown TOML type: " + type);
-        }
+        return switch (type) {
+            case "string" -> STRING;
+            case "integer" -> INTEGER;
+            case "boolean" -> BOOLEAN;
+            case "float" -> FLOAT;
+            case "date" -> DATE;
+            case "array" -> ARRAY;
+            case "table" -> TABLE;
+            default -> throw new IllegalArgumentException("Unknown TOML type: " + type);
+        };
     }
 
     public static String toString(TomlTypes type) {
-        switch (type) {
-            case STRING:
-                return "string";
-            case INTEGER:
-                return "integer";
-            case BOOLEAN:
-                return "boolean";
-            case FLOAT:
-                return "float";
-            case DATE:
-                return "date";
-            case ARRAY:
-                return "array";
-            case TABLE:
-                return "table";
-            case TABLE_ARRAY:
-                return "table_array";
-            default:
-                throw new IllegalArgumentException("Unknown TOML type: " + type);
-        }
+        return switch (type) {
+            case STRING -> "string";
+            case INTEGER -> "integer";
+            case BOOLEAN -> "boolean";
+            case FLOAT -> "float";
+            case DATE -> "date";
+            case ARRAY -> "array";
+            case TABLE -> "table";
+        };
     }
 
     public static TomlType create(TomlTypes type, String key, Object value) {
-        switch (type) {
-            case STRING:
-                return new TomlString(key, (String) value);
-            case INTEGER:
-                return new TomlInteger(key, (int) value);
-            case BOOLEAN:
-                return new TomlBoolean(key, (boolean) value);
-            case FLOAT:
-                return new TomlFloat(key, (double) value);
-            case DATE:
-                return new TomlDate(key, (Date) value);
-            default:
-                throw new IllegalArgumentException("Unknown TOML type: " + type);
-        }
+        return switch (type) {
+            case STRING -> new TomlString(key, (String) value);
+            case INTEGER -> new TomlInteger(key, (int) value);
+            case BOOLEAN -> new TomlBoolean(key, (boolean) value);
+            case FLOAT -> new TomlFloat(key, (double) value);
+            case DATE -> new TomlDate(key, (Date) value);
+            default -> throw new IllegalArgumentException("Unknown TOML type: " + type);
+        };
     }    
 }
