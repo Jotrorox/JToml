@@ -1,5 +1,7 @@
 package com.jotrorox.jtoml.types;
 
+import java.util.Date;
+
 /**
  * Represents a TOML Date
  * 
@@ -13,7 +15,7 @@ public class TomlDate extends TomlType {
     /**
      * The value of the TOML date
      */
-    private final String value;
+    private final Date value;
     
     /**
      * The key of the TOML date
@@ -26,14 +28,14 @@ public class TomlDate extends TomlType {
      * @param key The key of the TOML date
      * @param value The value of the TOML date
      */
-    public TomlDate(String key, String value) {
+    public TomlDate(String key, Date value) {
         this.key = key;
         this.value = value;
     }
 
     @Override
     public String toTomlString() {
-        return key + " = " + value;
+        return key + " = " + value.toString();
     }
 
     @Override
@@ -64,7 +66,7 @@ public class TomlDate extends TomlType {
      * 
      * @return The value of the TOML date
      */
-    public String getValue() {
+    public Date getValue() {
         return value;
     }
 
@@ -75,5 +77,15 @@ public class TomlDate extends TomlType {
      */
     public String getKey() {
         return key;
+    }
+
+    /**
+     * Creates a new TOML date from a TOML string
+     * 
+     * @param toml The TOML string to convert
+     * @return The TOML date created from the TOML string
+     */
+    public static TomlDate fromToml(String toml) {
+        return null;
     }
 }
