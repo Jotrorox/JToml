@@ -34,9 +34,24 @@ public class TomlDate extends TomlType {
         this.value = value;
     }
 
+    @SuppressWarnings("deprecation")
     @Override
     public String toTomlString() {
-        return key + " = " + value.toString();
+        // Format the date into the following format: 1979-05-27T07:32:00Z
+        StringBuilder formattedBuilder = new StringBuilder();
+        formattedBuilder.append(value.getYear() + 1900);
+        formattedBuilder.append("-");
+        formattedBuilder.append(value.getMonth() + 1);
+        formattedBuilder.append("-");
+        formattedBuilder.append(value.getDate());
+        formattedBuilder.append("T");
+        formattedBuilder.append(value.getHours());
+        formattedBuilder.append(":");
+        formattedBuilder.append(value.getMinutes());
+        formattedBuilder.append(":");
+        formattedBuilder.append(value.getSeconds());
+        formattedBuilder.append("Z");
+        return formattedBuilder.toString();
     }
 
     @Override
@@ -86,7 +101,21 @@ public class TomlDate extends TomlType {
      * @param toml The TOML string to convert
      * @return The TOML date created from the TOML string
      */
+    @SuppressWarnings("deprecation")
     public static TomlDate fromToml(String toml) {
-        return null;
+        // Get the JavaDate from the following format: key = 1979-05-27T07:32:00Z
+        String[] split = toml.split("=");
+        String key = split[0].trim();
+        Date date = new Date();
+        String[] dateSplit = split[1].trim().split("T"); // 1979-05-27T07:32:00Z
+        String[] dateSplit2 = dateSplit[0].split("-"); // 1979-05-27
+        String[] timeSplit = dateSplit[1].split(":"); // 07:32:00Z
+        date.setYear(Integer.parseInt(dateSplit2[0]) - 1900);
+        date.setMonth(Integer.parseInt(dateSplit2[1]) - 1);
+        date.setDate(Integer.parseInt(dateSplit2[2]));
+        date.setHours(Integer.parseInt(timeSplit[0]));
+        date.setMinutes(Integer.parseInt(timeSplit[1]));
+        date.setSeconds(Integer.parseInt(timeSplit[2].substring(0, 2)));
+        return new TomlDate(key, date);
     }
 }
